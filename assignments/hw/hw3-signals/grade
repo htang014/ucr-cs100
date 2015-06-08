@@ -1,4 +1,4 @@
-35/ 100
+75/ 100
 Last update Fri May 29 21:20:04 2015 -0700
 
 cd PATH: /20
@@ -8,7 +8,6 @@ cd PATH: /20
 
 cd by itself: 0/20 
 
-^C signal: 0/40 (^C when running a child process should not stop the entire shell)
 
 extra credit 1: /30
     [0/10] Catching ^Z and pausing
