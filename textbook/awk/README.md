@@ -46,6 +46,30 @@ awk '{print "hello","world"}' class.txt
 ```
 prints `"hello world\n"` for every line with a match.
 
+You can also use `;` to denote the end of an action. 
+This is useful for stringing together multiple actions.
+```
+awk '/pattern/ {action; action}' [filepath]
+```
+So,
+```
+awk '{print; print "-------------"}' class.txt
+```
+adds `"-------------"` under every line:
+```
+Class #1 taught by Berta Quinney
+-------------
+        Shery Principe                       Grade: C
+-------------
+        Marget Creighton                     Grade: A
+-------------
+        Meggan Rugg                          Grade: A
+-------------
+        Minna Harmon                         Grade: F
+-------------
+...
+```
+
 Let's take things a bit further.
 What if we wanted only to view classes, and omit student information?
 Using the pattern field, AWK can function like grep:
@@ -224,11 +248,6 @@ If you type your AWK commands in a text file, you can run it by typing:
 awk -f (file name here) '/pattern/ {action} ' [filepath]
 ```
 
-Similar to C, you can also use `;` to denote the end of an action.  
-This is useful for multiple actions.
-```
-awk '/pattern/ {action; action}' [filepath]
-```
 
 ##Conclusion##
 As a parsing tool, AWK is extremely powerful, especially when compared to simpler tools such as grep and cat.
