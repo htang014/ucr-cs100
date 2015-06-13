@@ -231,14 +231,7 @@ awk '/pattern/ {action; action}' [filepath]
 ```
 
 ##Conclusion##
-I hope that after reading through our tutorial you have a good enough understanding of AWK to be able to use it for your purposes.
-It is truly a powerful tool that is easy to learn but will be able to save you a lot of parsing time.
-You do not need to use AWK in all the ways described in this tutorial, you could use it to filter out unnecessary data or other simple thingsn like that.
-Familiarizing yourself with AWK could allow you to save the time of creating a whole program to parse data that could be done in one line with AWK.
+As a parsing tool, AWK is extremely powerful, especially when compared to simpler tools such as grep and cat.
+In many cases, you do not even need to pipe output from AWK (although you can), since it is generally self-sufficient.
+This means that scripts written in AWK are generally more streamlined and legible than otherwise.
 However if you find you would need to write more than a hundred lines of AWK to do a job, perhaps it would be better to use a different programming language.
-
-
-#References:
-[Grymoire Tutorial](http://www.grymoire.com/Unix/Awk.html#uh-7)
-
-[GNU AWK Manual](https://www.gnu.org/software/gawk/manual/html_node/)
