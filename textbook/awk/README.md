@@ -1,14 +1,10 @@
-#AWK Tutorial#
-
 
 #What is AWK?#
------------
 AWK is a programming language that is a very powerful and simple text-processing utlity on Unix.
 It focuses on parsing input from a file stream into an output form specified by the user.
 For example, AWK can be used to sort through large tables of data, produce formatted reports, and overall is very valuable for data parsing.
 
 #Using AWK#
--------------
 
 In this tutorial we will be using an text file `class.txt`, which contains the records of a hypothetical elementary school class.
 
