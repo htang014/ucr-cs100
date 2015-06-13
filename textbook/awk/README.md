@@ -48,7 +48,7 @@ So,
 ```
 awk '{print "hello","world"}' class.txt
 ```
-prints `hello world` for every line with a match.
+prints `"hello world\n"` for every line with a match.
 
 Let's take things a bit further.
 What if we wanted only to view classes, and omit student information?
@@ -130,66 +130,65 @@ Operator | Definition
 >=       | greater or equal
 <=       | less or equal
 
-So the following check for a student's passing status:
+For instance, a conditional like this:
 ```
-awk '/Richelle Quade/ {print ($4 == "A" || $4 == "B" || $4 == "C") ? "pass" : "fail" }' class.txt
+($4 == "A" || $4 == "B" || $4 == "C")
 ```
-outputs this:
-```
-fail
-```
+is true if and only if the fourth column on the line is "A", "B", or "C".
+
 OK great!  Now that we know how to write expressions, we can move on.
 
 
 ###if/else statements###
 
-This school's poor student performance is hurting its funding, and its time for a purge.
-So how can we drop everyone who isn't up to snuff?
-We get to use the if statement:
+Let's say we want to check on a particular student's passing status in his/her class.
+In this case there are two conditions.
+A student is either passing or failing, so we get to use the if statement:
 ```
 if (condition) {action} else {action}
 
 ```
 Let's put it to practice:
 ```
-awk '{ if ($4=="A" || $4=="B" || $1=="Class"){ print } else { print "\tDROPPED" } }' class.txt
+awk '/Richelle Quade/ {if ($4 == "A" || $4 == "B" || $4 == "C") {print "pass"} else {print "fail"}}' class.txt
 ```
-
-And viola!
+Look at the above command.  `/Richelle Quade/` tells awk to only scan lines containing "Richelle Quade".
+Then, within the `{}` braces, we have an if/else statement that either prints "pass" or "fail".
+And viola! Here is our output:
 ```
-Class #1 taught by Berta Quinney
-        DROPPED
-        Marget Creighton                     Grade: A
-        Meggan Rugg                          Grade: A
-        DROPPED
-        Lara Dietz                           Grade: B
-        Sandy Lundberg                       Grade: B
-
-...
+fail
 ```
-Picture perfect classrooms! Alternatively, we can use AWK loops to pad its classes a little...
+Now let's look at loops...
 
 ###For loops###
-Let's write a command so that everyone with an A gets entered three times:
+Our current class list, though indented, is still rather hard to read.
+We can solve this problem by adding large breaks between classes.
+We can do this using a for loop:
 ```
-awk '{if ($4=="A") { for (i=0;i<3;i++) print } else { print } }' class.txt
+awk '{if ($1=="Class") { for (i=0;i<3;i++) print " "; print} else { print } }' class.txt
 ```
-Here's our output:
+As you can see, this command checks if the first column matches "Class".
+If it does match, then the statement `"for (i=0;i<3;i++) print " "` will cause `" \n"` to be printed three times.
+So, our output looks something like this:
 ```
-Class #1 taught by Berta Quinney
-        Shery Principe                       Grade: C
-        Marget Creighton                     Grade: A
-        Marget Creighton                     Grade: A
-        Marget Creighton                     Grade: A
-        Meggan Rugg                          Grade: A
-        Meggan Rugg                          Grade: A
-        Meggan Rugg                          Grade: A
-        Minna Harmon                         Grade: F
-        Lara Dietz                           Grade: B
-        Sandy Lundberg                       Grade: B
+Class #17 taught by Tilda Gardner
+        Richelle Quade                       Grade: F
+        Edgardo Persinger                    Grade: B
+        Kari Dougan                          Grade: F
+        Tawna Braun                          Grade: D
+        Danial Billman                       Grade: B
+        Rima Fester                          Grade: F
+
+
+
+Class #18 taught by Janett Galang
+        Sherryl Paschall                     Grade: A
+        Jeffery Waldeck                      Grade: A
+        Fermin Fitzwater                     Grade: B
+        Sade Mose                            Grade: B
+
 ...
 ```
-And now our student averages are top notch!
 
 ##Extended AWK##
 In order to write AWK scripts on multiple lines, use the following format:
