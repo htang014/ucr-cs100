@@ -55,7 +55,7 @@ Here's an example:
 ```
 awk '{print; print "-------------"}' class.txt
 ```
-This adds `"-------------"` under every line:
+This prints each line, but also adds `"-------------"` after every line:
 ```
 Class #1 taught by Berta Quinney
 -------------
