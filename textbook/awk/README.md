@@ -47,15 +47,15 @@ awk '{print "hello","world"}' class.txt
 prints `"hello world\n"` for every line with a match.
 
 You can also use `;` to denote the end of an action. 
-This is useful for stringing together multiple actions.
+This is useful for stringing together multiple actions like so:
 ```
 awk '/pattern/ {action; action}' [filepath]
 ```
-So,
+Here's an example:
 ```
 awk '{print; print "-------------"}' class.txt
 ```
-adds `"-------------"` under every line:
+This adds `"-------------"` under every line:
 ```
 Class #1 taught by Berta Quinney
 -------------
