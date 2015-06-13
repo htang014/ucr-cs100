@@ -66,7 +66,7 @@ Or if we wanted only student info,
 ```
 awk '!/Class/' class.txt
 ```
-The '!' in front of the pattern negates, so that AWK will only search lines without "Class".
+The '!' in front of the pattern negates, so that AWK will only search lines without `"Class"`.
 ```
 ...
         Richelle Quade                       Grade: F
