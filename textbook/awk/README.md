@@ -152,8 +152,8 @@ Let's put it to practice:
 ```
 awk '/Richelle Quade/ {if ($4 == "A" || $4 == "B" || $4 == "C") {print "pass"} else {print "fail"}}' class.txt
 ```
-Look at the above command.  `/Richelle Quade/` tells awk to only scan lines containing "Richelle Quade".
-Then, within the `{}` braces, we have an if/else statement that either prints "pass" or "fail".
+Look at the above command.  `/Richelle Quade/` tells awk to only scan lines containing `"Richelle Quade"`.
+Then, within the `{}` braces, we have an if/else statement that either prints `"pass"` or `"fail"`.
 And viola! Here is our output:
 ```
 fail
@@ -167,7 +167,7 @@ We can do this using a for loop:
 ```
 awk '{if ($1=="Class") { for (i=0;i<3;i++) print " "; print} else { print } }' class.txt
 ```
-As you can see, this command checks if the first column matches "Class".
+As you can see, this command checks if the first column matches `"Class"`.
 If it does match, then the statement `"for (i=0;i<3;i++) print " "` will cause `" \n"` to be printed three times.
 So, our output looks something like this:
 ```
